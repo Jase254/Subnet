@@ -12,12 +12,12 @@ db = SQLAlchemy(app)
 
 
 class Ips(db.Model):
-    ip = db.column(db.Text, primary_key=True)
-    hostname = db.column(db.Text)
-    timestamp = db.column(db.Time(timezone=False))
-    ucinet = db.column(db.Text)
-    building_num = db.column(db.Integer, default=0)
-    room_num = db.column(db.Integer, default=0)
+    ip = db.Column(db.Text, primary_key=True)
+    hostname = db.Column(db.Text)
+    timestamp = db.Column(db.Time(timezone=False))
+    ucinet = db.Column(db.Text)
+    building_num = db.Column(db.Integer, default=0)
+    room_num = db.Column(db.Integer, default=0)
 
     def __init__(self, ip, hostname, timestamp, ucinet, building, room):
         self.ip = ip
@@ -32,8 +32,8 @@ class Ips(db.Model):
 
 
 class Notes(db.Model):
-    date = db.column(db.Date, primary_key=True)
-    notes = db.column(db.Text)
+    date = db.Column(db.Date, primary_key=True)
+    notes = db.Column(db.Text)
 
     def __init__(self, date, notes):
         self.date = date

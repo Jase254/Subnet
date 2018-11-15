@@ -14,18 +14,21 @@ db = SQLAlchemy(app)
 class Ips(db.Model):
     ip = db.Column(db.Text, primary_key=True)
     hostname = db.Column(db.Text)
+    prev_hostname = db.Column(db.Text)
     timestamp = db.Column(db.Time(timezone=False))
     ucinet = db.Column(db.Text)
-    building_num = db.Column(db.Integer, default=0)
+    building = db.Column(db.Text)
     room_num = db.Column(db.Integer, default=0)
 
-    def __init__(self, ip, hostname, timestamp, ucinet, building, room):
+    def __init__(self, ip, hostname, timestamp, ucinet, building, room, progress):
         self.ip = ip
         self.hostname = hostname
+        self.prev_hostname = hostname
         self.timestamp = timestamp
         self.ucinet = ucinet
         self.building_num = building
         self.room_num = room
+        self.progress = progress
 
     def __repr__(self):
         return "IP: {}".format(self.ip)
